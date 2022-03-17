@@ -169,8 +169,26 @@ module Adhearsion
         logger.info "Received SIGALRM. Toggling trace logging."
         Adhearsion::Logging.toggle_trace!
       when 'ABRT'
-        logger.info "Received ABRT signal. Forcing stop."
-        Adhearsion::Process.force_stop
+        logger.info "Received ABRT signal.  Celluloid, Thread, GirlFriday, Adhearsion statistics dumps follow..."
+        logger.info "Logging Celluloid stack dump..."
+        statistics_actor = nil
+        Celluloid.stack_dump.each{|st|
+           logger.info (st.inspect)
+           logger.info "st.name --> #{st.name}"
+           if st.name == "Adhearsion::Statistics"
+             statistics_actor = st
+           e
+        }
+        logger.info "Logging Thread list with backtrace..."
+        Thread.list.each do |thread|
+           logger.info "Thread TID-#{thread.object_id.to_s(36)}"
+           logger.info  thread.backtrace.join("n")
+        end
+        logger.info "Logging Girlfriday status..."
+        logger.info GirlFriday.status
+
+        logger.info "Logging Celluloid::Actor[:statistics]..."
+        logger.info Celluloid::Actor[:statistics].dump
       end
     end
 
