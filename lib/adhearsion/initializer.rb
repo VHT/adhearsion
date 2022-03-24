@@ -175,9 +175,6 @@ module Adhearsion
         Celluloid.stack_dump.each{|st|
            logger.info (st.inspect)
            logger.info "st.name --> #{st.name}"
-           if st.name == "Adhearsion::Statistics"
-             statistics_actor = st
-           e
         }
         logger.info "Logging Thread list with backtrace..."
         Thread.list.each do |thread|
