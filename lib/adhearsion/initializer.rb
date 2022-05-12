@@ -171,20 +171,19 @@ module Adhearsion
       when 'ABRT'
         logger.info "Received ABRT signal.  Celluloid, Thread, GirlFriday, Adhearsion statistics dumps follow..."
         logger.info "Logging Celluloid stack dump..."
-        statistics_actor = nil
         Celluloid.stack_dump.each{|st|
-           logger.info (st.inspect)
+           logger.info (st&.inspect)
         }
         logger.info "Logging Thread list with backtrace..."
         Thread.list.each do |thread|
-           logger.info "Thread TID-#{thread.object_id.to_s(36)}"
-           logger.info  thread.backtrace.join("n")
+           logger.info "Thread TID-#{thread&.object_id&.to_s(36)}"
+           logger.info  thread&.backtrace&.join("\n")
         end
         logger.info "Logging Girlfriday status..."
-        logger.info GirlFriday.status
+        logger.info GirlFriday&.status
 
         logger.info "Logging Celluloid::Actor[:statistics]..."
-        logger.info Celluloid::Actor[:statistics].dump
+        logger.info Celluloid::Actor[:statistics]&.dump
       end
     end
 
