@@ -36,7 +36,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'punchblock', ["~> 2.6"]
   s.add_runtime_dependency 'rake'
   s.add_runtime_dependency 'ruby_speech', ["~> 2.0"]
-  s.add_runtime_dependency 'thor', "~> 0.18.0"
+  s.add_runtime_dependency 'thor', ">= 0.18", "< 1.3"
 
   s.add_development_dependency 'aruba', "~> 0.5"
   s.add_development_dependency 'cucumber'
