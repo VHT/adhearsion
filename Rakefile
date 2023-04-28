@@ -30,10 +30,6 @@ rescue LoadError
   STDERR.puts "\nCould not require() YARD! Install with 'gem install yard' to get the 'yardoc' task\n\n"
 end
 
-task :stats do
-  system 'scripts/cloc-1.64.pl . --exclude-dir=.git,vendor,coverage,doc,scripts,tmp,.bundle,pkg'
-end
-
 task :encodeify do
   Dir['{bin,features,lib,spec}/**/*.rb'].each do |filename|
     File.open filename do |file|
