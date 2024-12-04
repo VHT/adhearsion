@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'nokogiri', ["~> 1.8", ">= 1.8.3"] # Versions > 1.10 broken under JRuby
   s.add_runtime_dependency 'pry'
   s.add_runtime_dependency 'rake'
-  s.add_runtime_dependency 'ruby_ami', ["~> 2.2"]
+  s.add_runtime_dependency 'ruby_ami', ["~> 3.0"]
   s.add_runtime_dependency 'ruby_jid', ["~> 1.0"]
   s.add_runtime_dependency 'ruby_speech', ["~> 3.0"]
   s.add_runtime_dependency 'state_machine', ["~> 1.0"]
