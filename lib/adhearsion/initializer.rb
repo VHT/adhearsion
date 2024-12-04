@@ -3,7 +3,6 @@
 require 'adhearsion/application'
 require 'adhearsion/linux_proc_name'
 require 'adhearsion/rayo/initializer'
-require 'adhearsion/http_server'
 require 'rbconfig'
 
 module Adhearsion
@@ -43,7 +42,6 @@ module Adhearsion
         initialize_exception_logger
         setup_i18n_load_path
         Rayo::Initializer.init
-        HTTPServer.start
         init_plugins
 
         Rayo::Initializer.run
