@@ -107,7 +107,7 @@ module Adhearsion
     end
 
     def fqdn
-      Socket.gethostbyname(Socket.gethostname).first
+      Addrinfo.getaddrinfo(Socket.gethostname).first
     end
 
     def self.method_missing(method_name, *args, &block)
