@@ -3,7 +3,6 @@
 require 'adhearsion/application'
 require 'adhearsion/linux_proc_name'
 require 'adhearsion/rayo/initializer'
-require 'adhearsion/http_server'
 require 'rbconfig'
 
 module Adhearsion
@@ -43,7 +42,6 @@ module Adhearsion
         initialize_exception_logger
         setup_i18n_load_path
         Rayo::Initializer.init
-        HTTPServer.start
         init_plugins
 
         Rayo::Initializer.run
@@ -145,7 +143,7 @@ module Adhearsion
 
     def load_app_file
       path = "#{Adhearsion.config.root}/config/app.rb"
-      load path if File.exists?(path)
+      load path if File.exist?(path)
     end
 
     def load_config_file
@@ -155,12 +153,12 @@ module Adhearsion
     def load_events_file
       Adhearsion::Events.init
       path = "#{Adhearsion.config.root}/config/events.rb"
-      load path if File.exists?(path)
+      load path if File.exist?(path)
     end
 
     def load_routes_file
       path = "#{Adhearsion.config.root}/config/routes.rb"
-      load path if File.exists?(path)
+      load path if File.exist?(path)
     end
 
     def configure_plugins

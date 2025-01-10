@@ -5,6 +5,7 @@ abort "ERROR: You are running Adhearsion on an unsupported version of Ruby (Ruby
 %w(
   adhearsion/rayo
   celluloid
+  celluloid/autostart
   active_support/inflector
 ).each { |r| require r }
 

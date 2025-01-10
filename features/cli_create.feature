@@ -29,7 +29,6 @@ Feature: Adhearsion Ahn CLI (Create)
       | config/events.rb                          |
       | config/routes.rb                          |
       | config/locales/en.yml                     |
-      | config.ru                                 |
       | Gemfile                                   |
       | script/ahn                                |
       | spec/spec_helper.rb                       |
@@ -55,10 +54,6 @@ Feature: Adhearsion Ahn CLI (Create)
     And the file "config/routes.rb" should contain each of these content parts:
     """
     Adhearsion.router
-    """
-    And the file "config.ru" should contain each of these content parts:
-    """
-    run Sinatra::Application
     """
     And the file "README.md" should contain each of these content parts:
     """
@@ -97,7 +92,6 @@ Feature: Adhearsion Ahn CLI (Create)
       | config/environment.rb |
       | config/events.rb      |
       | config/routes.rb      |
-      | config.ru             |
       | Gemfile               |
       | script/ahn            |
       | spec/spec_helper.rb   |
