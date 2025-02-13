@@ -330,7 +330,7 @@ module Adhearsion
 
     # @private
     def inspect
-      "#<#{self.class} call=#{call.alive? ? call.id : ''}, metadata=#{metadata.inspect}>"
+      "#<#{self.class} call=#{call.alive? ? call.id : ''}>"
     end
 
     def eql?(other)
