@@ -50,12 +50,12 @@ module Adhearsion
         include mod
       end
 
-      def before_call(*args, &block)
+      ruby2_keywords def before_call(*args, &block)
         Adhearsion.deprecated :before
         before(*args, &block)
       end
 
-      def after_call(*args, &block)
+      ruby2_keywords def after_call(*args, &block)
         Adhearsion.deprecated :after
         after(*args, &block)
       end
@@ -333,7 +333,7 @@ module Adhearsion
 
     # @private
     def inspect
-      "#<#{self.class} call=#{call.alive? ? call.id : ''}, metadata=#{metadata.inspect}>"
+      "#<#{self.class} call=#{call.alive? ? call.id : ''}>"
     end
 
     def eql?(other)

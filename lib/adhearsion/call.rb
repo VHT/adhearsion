@@ -17,7 +17,7 @@ module Adhearsion
     ExpiredError    = Class.new Celluloid::DeadActorError
 
     # @private
-    class ActorProxy < Celluloid::CellProxy
+    class ActorProxy < Celluloid::Proxy::Cell
       def method_missing(meth, *args, &block)
         super(meth, *args, &block)
       rescue ::Celluloid::DeadActorError
@@ -254,7 +254,7 @@ module Adhearsion
       end
 
       on_end do |event|
-        logger.info "Call #{from} -> #{to} ended due to #{event.reason}#{" (code #{event.platform_code})" if event.platform_code}"
+        logger.info "Call ended due to #{event.reason}#{" (code #{event.platform_code})" if event.platform_code}"
         @end_time = event.timestamp.to_time
         @duration = @end_time.to_i - @start_time.to_i if @start_time
         clear_from_active_calls

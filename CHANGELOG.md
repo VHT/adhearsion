@@ -48,7 +48,6 @@
   * Change: Permit application environment to be set only by AHN_ENV. The config system depends on the environment, and the previous dependency was circular.
   * Change: Define configuration per-environment for any environment name and without colliding with plugin names. See [#442](https://github.com/adhearsion/adhearsion/issues/442). Syntax is now `config.env(:development).foo = :bar` instead of `config.development.foo = :bar`.
   * Feature: Add i18n support via `CallController#t`
-  * Feature: Integrate a Rack-based HTTP server from the Virginia plugin
   * Feature: Permit timing out when calling `Call#wait_for_end`
   * Upgrade to Celluloid 0.16
   * Move events system to Celluloid and do away with GirlFriday
