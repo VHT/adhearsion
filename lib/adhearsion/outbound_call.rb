@@ -94,7 +94,12 @@ module Adhearsion
       Adhearsion.active_calls << current_actor
 
       write_and_await_response(@dial_command, wait_timeout, true).tap do |dial_command|
-        @start_time = dial_command.timestamp.to_time
+        if dial_command.respond_to?(:timestamp)
+          @start_time = dial_command.timestamp.to_time
+        else
+          logger.warn "dial_command #{dial_command.inspect} did not respond to timestamp. @dial_command #{@dial_command.inspect}"
+        end
+
         if @dial_command.uri != self.uri
           logger.warn "Requested call URI (#{uri}) was not respected. Tracking by new URI #{self.uri}. This might cause a race in event handling, please upgrade your Rayo server."
           Adhearsion.active_calls << current_actor
